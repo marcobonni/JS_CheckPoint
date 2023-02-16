@@ -30,12 +30,12 @@
             let more_info = document.createElement("BUTTON")
             more_info.setAttribute("id", "prova")
             more_info.setAttribute("onclick", "moreinfo()")
+            more_info.innerHTML = "More info"
             div.appendChild(more_info)
         }
         async function moreinfo() {
             const obj = await fetch(`https://pokeapi.co/api/v2/pokemon/${input_testo}`)
             pokemon = await obj.json();
-            
         }
         div.appendChild(p)
         div.appendChild(img)
