@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="testo">
+    <button id="bottone" onclick="visual()">Click me</button>
+    <div id="div"></div>
+    <script>
+        let div = document.getElementById("div")
+        let p = document.createElement("p")
+        let img = document.createElement("img")
+        async function visual() {
+            let input_testo = document.getElementById("testo").value;
+            const obj = await fetch(`https://pokeapi.co/api/v2/pokemon/${input_testo}`)
+            pokemon = await obj.json();
+            pokemonImg = pokemon.sprites?.front_default
+            pokemonName = pokemon.species?.name
+            pokemonExp = pokemon.base_experience
+            pokemonAbility1 = pokemon.abilities[0]?.ability?.name
+            pokemonAbility2 = pokemon.abilities[1]?.ability?.name
+            p.innerHTML = `${pokemonName} ${pokemonExp} ${pokemonAbility1} ${pokemonAbility2}`
+            img.src = pokemonImg
+            let more_info = document.createElement("BUTTON")
+            more_info.setAttribute("id", "prova")
+            more_info.setAttribute("onclick", "moreinfo()")
+            div.appendChild(more_info)
+        }
+        async function moreinfo() {
+            const obj = await fetch(`https://pokeapi.co/api/v2/pokemon/${input_testo}`)
+            pokemon = await obj.json();
+            
+        }
+        div.appendChild(p)
+        div.appendChild(img)
+    </script>
+</body>
+
+</html>
