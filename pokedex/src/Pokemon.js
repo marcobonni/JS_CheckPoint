@@ -19,20 +19,17 @@ function RenderPokemon({ name }) {
     }, [name])
     // const sprite = {data.sprites.front_default}
     // console.log(sprite)
-    const chatgpt = data.abilities.map((ability) => (
-                <li key={ability.ability.name}>{ability.ability.name}</li>
-            ))
-    console.log(chatgpt)
     return (
         <div>
             {data && <p>{data.name}</p>}
             {data && <p>{data.id}</p>}
-            {data && <img src={data.sprites.front_shiny} alt="ma vai a cagare" />}
-            {/* <ul>{data.abilities.map((el, index) => (
-                <li key={index}>{el.ability.name}</li>)
+            {data && <img src={data.sprites.front_shiny} alt="not working" />}
+            {/* <ul>{data.sprites.map((el) => (
+                <img src={el.sprites}/>)
             )}</ul> */}
             {data && <li>{data.abilities[0].ability.name}</li>}
-            {data && <ul>{chatgpt}</ul>}
+            {data && <li>{data.abilities[1].ability.name}</li>}
+            {data && <li>{data.abilities[2].ability.name}</li>}
         </div>
     )
 }
